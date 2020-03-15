@@ -1,0 +1,76 @@
+﻿key,layout_key,key_type,color
+escape,KC_ESC,esc,red
+1 !,KC_1,num,navyblue
+2 @,KC_2,num,navyblue
+3 #,KC_3,num,navyblue
+4 $,KC_4,num,navyblue
+5 %,KC_5,num,navyblue
+[ {,KC_LBRC,punct,orange
+\ |,KC_BSLS,punct,orange
+] },KC_RBRC,punct,orange
+6 ^,KC_6,num,navyblue
+7 &,KC_7,num,navyblue
+8 *,KC_8,num,navyblue
+9 (,KC_9,num,navyblue
+0 ),KC_0,num,navyblue
+` ~,KC_GRV,punct,orange
+key.tab,KC_TAB,space,pink
+q,KC_Q,alpha,grey80
+d,KC_D,alpha,grey80
+r,KC_R,alpha,grey80
+w,KC_W,alpha,grey80
+b,KC_B,alpha,grey80
+,C_S_T(KC_NO),other,yellow
+key.up,KC_UP,location,green
+key.enter,KC_ENT,enter,pink
+j,KC_J,alpha,grey80
+f,KC_F,alpha,grey80
+u,KC_U,alpha,grey80
+p,KC_P,alpha,grey80
+; :,KC_SCLN,punct,orange
+"' """,KC_QUOT,punct,orange
+key.caps_lock,KC_CAPS,mod,cyan
+a,KC_A,alpha,grey80
+s,KC_S,alpha,grey80
+h,KC_H,alpha,grey80
+t,KC_T,alpha,grey80
+g,KC_G,alpha,grey80
+key.left,KC_LEFT,location,green
+key.down,KC_DOWN,location,green
+key.right,KC_RGHT,location,green
+y,KC_Y,alpha,grey80
+n,KC_N,alpha,grey80
+e,KC_E,alpha,grey80
+o,KC_O,alpha,grey80
+i,KC_I,alpha,grey80
+key.enter,KC_ENT,enter,pink
+,MO(1),other,yellow
+z,KC_Z,alpha,grey80
+x,KC_X,alpha,grey80
+m,KC_M,alpha,grey80
+c,KC_C,alpha,grey80
+v,KC_V,alpha,grey80
+= +,KC_EQL,punct,orange
+key.page_up,KC_PGUP,location,green
+_ -,KC_MINS,punct,orange
+k,KC_K,alpha,grey80
+l,KC_L,alpha,grey80
+", <",KC_COMM,alpha,grey80
+. >,KC_DOT,alpha,grey80
+/ ?,KC_SLSH,alpha,grey80
+key.delete,KC_DEL,remove,red
+key.home,KC_HOME,location,green
+key.end,KC_END,location,green
+key.print_screen,KC_PSCR,function,cyan
+key.alt_r,KC_RALT,mod,cyan
+key.shift_left,KC_LSFT,mod,cyan
+key.backspace,KC_BSPC,remove,red
+key.ctrl_l,KC_RCTL,mod,cyan
+key.page_down,KC_PGDN,location,green
+key.ctrl_r,KC_RCTL,mod,cyan
+key.space,KC_SPC,space,pink
+key.shift_right,KC_RSFT,mod,cyan
+key.cmd,KC_LGUI,function,cyan
+key.to(1),TO(1),function,cyan
+key.to(2),TO(2),function,cyan
+key.f5,KC_F5,function,cyan
