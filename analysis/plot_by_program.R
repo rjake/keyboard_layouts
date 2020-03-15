@@ -41,12 +41,12 @@ key_log <-
       str_replace("^.(.).$", "\\1") %>% 
       str_replace("key.shift", "key.shift_right") %>% 
       str_replace("<77>", "m") %>% # happens with ctrl + shift
-      str_replace("x01", "key.ctrl_left a") %>% 
-      str_replace("x03", "key.ctrl_left c") %>%
-      str_replace("x13", "key.ctrl_left s") %>%
-      str_replace("x16", "key.ctrl_left v") %>% 
-      str_replace("x19", "key.ctrl_left y") %>% 
-      str_replace("x1a", "key.ctrl_left z")  
+      str_replace("x01", "a") %>% 
+      str_replace("x03", "c") %>%
+      str_replace("x13", "s") %>%
+      str_replace("x16", "v") %>% 
+      str_replace("x19", "y") %>% 
+      str_replace("x1a", "z")  
   ) %>% 
   left_join(key_map) %>% 
   left_join(layer_map)
