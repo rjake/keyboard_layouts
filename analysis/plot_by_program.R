@@ -1,4 +1,5 @@
 library(tidyverse)
+library(lubridate)
 library(jsonlite)
 
 layer_map <-
@@ -33,7 +34,14 @@ raw_data <-
 
 key_log <-
   raw_data %>%
-  filter(key_full != lag(key_full)) %>%
+  mutate(
+    date_time =
+      ymd_hms(str_sub(time, 1, 19)),
+    seconds = date_time + milliseconds(as.integer(str_sub(time, 21, 23))),
+    diff = as.numeric(seconds - lag(seconds, default = first(seconds))),
+    same_value = key_full == lag(key_full, default = "")
+  ) %>%
+  filter(!(same_value & diff < 0.04)) %>%
   mutate(
     window = str_extract(
       window_full,
