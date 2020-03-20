@@ -34,6 +34,7 @@ raw_data <-
 
 key_log <-
   raw_data %>%
+  mutate(window_full = gsub('[^ -~]', '', window_full)) %>%
   mutate(
     date_time =
       ymd_hms(str_sub(time, 1, 19)),
@@ -43,14 +44,21 @@ key_log <-
   ) %>%
   filter(!(same_value & diff < 0.04)) %>%
   mutate(
-    window = str_extract(
-      window_full,
-      "Chrome|Slack|Spyder|RStudio|Excel|GitHub|Aginity|Outlook"
+    window =
+      tolower(window_full) %>%
+      str_replace("- (message|meeting)", "outlook") %>%
+      str_replace("acpr", "epic") %>%
+      str_replace("ppt", "powerpoint") %>%
+      str_replace("\\\\remote", "epic") %>%
+      # str_replace("", "") %>%
+      # str_replace("", "")
+      str_extract(
+          "chrome|slack|spyder|rstudio|excel|github|aginity|outlook|powerpoint|epic"
     ),
     key =
       tolower(key_full) %>%
       str_replace("^.(.).$", "\\1") %>%
-      str_replace("key.shift", "key.shift_right") %>%
+      #str_replace("key.shift", "key.shift_right") %>%
       str_replace("<77>", "m") %>% # happens with ctrl + shift
       str_replace("x01", "a") %>%
       str_replace("x03", "c") %>%
@@ -67,22 +75,39 @@ count(key_log, window, sort = T)
 
 key_log %>%
   filter(is.na(window)) %>%
-  count(window_full, sort = TRUE)
+  count(window_full, sort = TRUE) %>%
+  print(n = Inf)
 
 
 window_totals <-
   key_log %>%
-  add_count(window, name = "window_n") %>%
+  add_count(name = "window_n") %>%
   count(window, window_n, layout_key, color, x, y) %>%
   mutate(pct = (n/window_n * 100))
 
 
 window_totals %>%
-  filter(window_n > 1000) %>%
+  filter(window_n > 100) %>%
   drop_na() %>%
   ggplot(aes(factor(x), factor(y), alpha = pct)) +
   geom_point(aes(color = color, size = pct)) +
-  facet_wrap(~window, ncol = 1) +
+  facet_wrap(~window) +
+  scale_color_identity() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(color = "grey90", fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    legend.position = "none",
+    aspect.ratio = 0.25
+  )
+
+key_log %>%
+  drop_na() %>%
+  ggplot(aes(factor(x), factor(y))) +
+  geom_count(aes(color = color)) +
   scale_color_identity() +
   theme_minimal() +
   theme(
