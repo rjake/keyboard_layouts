@@ -1,5 +1,5 @@
-﻿key,layout_key,key_type,color
-escape,KC_ESC,esc,red
+key,layout_key,key_type,color
+key.esc,KC_ESC,esc,red
 1 !,KC_1,num,navyblue
 2 @,KC_2,num,navyblue
 3 #,KC_3,num,navyblue
@@ -63,13 +63,13 @@ key.home,KC_HOME,location,green
 key.end,KC_END,location,green
 key.print_screen,KC_PSCR,function,cyan
 key.alt_r,KC_RALT,mod,cyan
-key.shift_left,KC_LSFT,mod,cyan
+key.shift,KC_LSFT,mod,cyan
 key.backspace,KC_BSPC,remove,red
-key.ctrl_l,KC_RCTL,mod,cyan
+key.ctrl_l,KC_LCTL,mod,cyan
 key.page_down,KC_PGDN,location,green
 key.ctrl_r,KC_RCTL,mod,cyan
 key.space,KC_SPC,space,pink
-key.shift_right,KC_RSFT,mod,cyan
+key.shift_r,KC_RSFT,mod,cyan
 key.cmd,KC_LGUI,function,cyan
 key.to(1),TO(1),function,cyan
 key.to(2),TO(2),function,cyan
