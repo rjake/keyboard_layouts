@@ -46,14 +46,14 @@ key_log <-
   mutate(
     window =
       tolower(window_full) %>%
-      str_replace("- (message|meeting)", "outlook") %>%
+      str_replace("- (message|meeting|appointment)", "outlook") %>%
       str_replace("acpr", "epic") %>%
       str_replace("ppt", "powerpoint") %>%
       str_replace("\\\\remote", "epic") %>%
       # str_replace("", "") %>%
       # str_replace("", "")
       str_extract(
-          "chrome|slack|spyder|rstudio|excel|github|aginity|outlook|powerpoint|epic"
+          "chrome|slack|spyder|rstudio|excel|github|aginity|outlook|powerpoint|epic|word$"
     ),
     key =
       tolower(key_full) %>%
@@ -81,18 +81,41 @@ key_log %>%
 
 window_totals <-
   key_log %>%
-  add_count(name = "window_n") %>%
+  drop_na() %>%
+  add_count(window, name = "window_n") %>%
+  filter(window_n > 1000) %>%
   count(window, window_n, layout_key, color, x, y) %>%
-  mutate(pct = (n/window_n * 100))
+  mutate(pct = (n/window_n * 100)) %>%
+  group_by(layout_key) %>%
+  mutate(mean = mean(pct)) %>%
+  ungroup() %>%
+  mutate(diff = pct - mean,
+         #diff = ifelse(diff > 5, 5, diff)
+         )
 
 
 window_totals %>%
-  filter(window_n > 100) %>%
-  drop_na() %>%
   ggplot(aes(factor(x), factor(y), alpha = pct)) +
   geom_point(aes(color = color, size = pct)) +
   facet_wrap(~window) +
   scale_color_identity() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(color = "grey90", fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    legend.position = "none",
+    aspect.ratio = 0.25
+  )
+
+window_totals %>%
+  filter(diff > 0) %>%
+  ggplot(aes(factor(x), factor(y))) +
+  geom_tile(aes(fill = color, alpha = pct)) +
+  facet_wrap(~window, ncol = 2) +
+  scale_fill_identity() +
   theme_minimal() +
   theme(
     panel.background = element_rect(color = "grey90", fill = "white"),
