@@ -1,0 +1,27 @@
+key,hex,ascii,meaning
+a,x01,SOH,Start of Header
+b,x02,STX,Start of Text
+c,x03,ETX,End of Text
+d,x04,EOT,End of Transmission
+e,x05,ENQ,Enquiry
+f,x06,ACK,Acknowledge
+g,x07,BEL,Bell
+h,x08,BS,Backspace
+i,x09,HT,Horizontal tab
+j,x0A,LF,Line feed
+k,x0B,VT,Vertical tab
+l,x0C,FF,Form feed
+m,x0D,CR,Carriage return
+n,x0E,SO,Shift out
+o,x0F,SI,Shift in
+p,x10,DLE,Data link escape
+q,x11,DCL,Xon (transmit on)
+r,x12,DC2,Device control 2
+s,x13,DC3,Xoff (transmit off)
+t,x14,DC4,Device control 4
+u,x15,NAK,Negative acknowledge
+v,x16,SYN,Synchronous idle
+w,x17,ETB,End of transmission
+x,x18,CAN,Cancel
+y,x19,EM,End of medium
+z,x1A,SUB,Substitute

@@ -16,6 +16,14 @@ layer_map <-
   filter(!(x == 9 & y == 4))
 
 
+a <-
+  tibble(dec = 1:255) %>%
+  mutate(
+    char = rawToChar(as.raw(coderange), multiple = TRUE),
+    hex = as.raw(dec)
+  )
+
+
 key_map <-
   read_csv("key_crosswalk.csv") %>%
   separate_rows(key, sep = " ")
@@ -65,7 +73,9 @@ key_log <-
       str_replace("x13", "s") %>%
       str_replace("x16", "v") %>%
       str_replace("x19", "y") %>%
-      str_replace("x1a", "z")
+      str_replace("x1a", "z") %>%
+      str_replace("x0c", "l") %>%
+      str_replace("x12", "r")
   ) %>%
   left_join(key_map) %>%
   left_join(layer_map)
