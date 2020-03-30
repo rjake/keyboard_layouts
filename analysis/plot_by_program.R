@@ -65,7 +65,7 @@ key_log <-
     ),
     key =
       tolower(key_full) %>%
-      str_replace("^.(.).$", "\\1") %>%
+      str_replace_all("'|- ", "") %>%
       #str_replace("key.shift", "key.shift_right") %>%
       str_replace("<77>", "m") %>% # happens with ctrl + shift
       str_replace("x01", "a") %>%
