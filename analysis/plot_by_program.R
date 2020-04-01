@@ -139,6 +139,7 @@ window_totals %>%
 
 key_log %>%
   drop_na() %>%
+  filter(as.Date(date_time) == today()) %>%
   ggplot(aes(factor(x), factor(y))) +
   geom_count(aes(color = color)) +
   scale_color_identity() +
