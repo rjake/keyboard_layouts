@@ -4,16 +4,15 @@ library(jsonlite)
 
 layer_map <-
   tibble(
-    layout_key = fromJSON(
+    layout_key_raw = fromJSON(
       "../layouts/idobo_xd75/workman/workman_layout.json"
     )$layers[1,],
     x = rep(1:15, 5),
     y = rep(5:1, each = 15)
   ) %>%
   mutate(
-    layout_key = ifelse(x == 7 & y == 1, "KC_LCTL", layout_key)
-  ) %>%
-  filter(!(x == 9 & y == 4))
+    layout_key = str_remove_all(layout_key_raw, "(L|C_S_T).*\\(|.*,|\\)")
+  )
 
 
 a <-
