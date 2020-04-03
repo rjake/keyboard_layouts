@@ -103,6 +103,24 @@ window_totals <-
          )
 
 
+key_log %>%
+  drop_na() %>%
+  filter(as.Date(date_time) == today()) %>%
+  ggplot(aes(factor(x), factor(y))) +
+  geom_count(aes(color = color)) +
+  scale_color_identity() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(color = "grey90", fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    legend.position = "none",
+    aspect.ratio = 0.25
+  )
+
+
 window_totals %>%
   ggplot(aes(factor(x), factor(y), alpha = pct)) +
   geom_point(aes(color = color, size = pct)) +
@@ -136,19 +154,4 @@ window_totals %>%
     aspect.ratio = 0.25
   )
 
-key_log %>%
-  drop_na() %>%
-  filter(as.Date(date_time) == today()) %>%
-  ggplot(aes(factor(x), factor(y))) +
-  geom_count(aes(color = color)) +
-  scale_color_identity() +
-  theme_minimal() +
-  theme(
-    panel.background = element_rect(color = "grey90", fill = "white"),
-    panel.grid = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    axis.title = element_blank(),
-    legend.position = "none",
-    aspect.ratio = 0.25
-  )
+
