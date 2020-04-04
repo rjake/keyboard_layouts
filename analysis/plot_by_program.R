@@ -5,7 +5,7 @@ library(jsonlite)
 layer_map <-
   tibble(
     layout_key_raw = fromJSON(
-      "../layouts/idobo_xd75/workman/workman_layout.json"
+      "../layouts/idobo_xd75/full_layout/workman_layout.json"
     )$layers[1,],
     x = rep(1:15, 5),
     y = rep(5:1, each = 15)
