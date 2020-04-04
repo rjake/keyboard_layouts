@@ -22,6 +22,8 @@ a <-
     hex = as.raw(dec)
   )
 
+# CTRL + ALT + C = <67> (Decimal)
+# CTRL + ALT + U = <85> (Decimal)
 
 key_map <-
   read_csv("key_crosswalk.csv") %>%
