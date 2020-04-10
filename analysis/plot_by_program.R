@@ -69,7 +69,8 @@ key_log <-
           "chrome|slack|spyder|rstudio|excel|github|aginity|outlook|powerpoint|epic|word$"
     ),
     key =
-      tolower(key_full) %>%
+      str_remove_all(key_full, "[^[:graph:]]") %>%
+      tolower() %>%
       str_replace_all("'|- ", "") %>%
       #str_replace("key.shift", "key.shift_right") %>%
       str_replace("<77>", "m") %>% # happens with ctrl + shift
@@ -124,7 +125,6 @@ window_totals <-
 
 window_totals %>%
   ggplot(aes((x), (y))) +
-  geom_point()
   geom_count(aes(color = color))
 
 key_log %>%
