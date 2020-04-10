@@ -2,25 +2,29 @@ library(tidyverse)
 library(lubridate)
 library(jsonlite)
 
+json_file <-
+  fromJSON("../layouts/idobo_xd75/condensed_layout/workman_layout.json")
+
 layer_map <-
-  tibble(
-    layout_key_raw = fromJSON(
-      "../layouts/idobo_xd75/full_layout/workman_layout.json"
-    )$layers[1,],
-    x = rep(1:15, 5),
-    y = rep(5:1, each = 15)
+  as_tibble(
+    x = unlist(json_file$layers),
+    .name_repair = "unique"
   ) %>%
+  set_names(1:75) %>%
+  t() %>%
+  as_tibble() %>%
+  mutate(V1 = ifelse(V2 != "KC_NO", V1, V2)) %>%
+  select(-V2) %>%
+  gather(layer, layout_key_raw) %>%
+  group_by(layer) %>%
+  mutate(pos = row_number()) %>%
   mutate(
+    # pos = as.numeric(pos),
+    x = ((pos - 1) %% 15) + 1,
+    y = 5 - ((pos - 1) %/% 15) + 1,
     layout_key = str_remove_all(layout_key_raw, "(L|C_S_T).*\\(|.*,|\\)")
   )
 
-
-a <-
-  tibble(dec = 1:255) %>%
-  mutate(
-    char = rawToChar(as.raw(coderange), multiple = TRUE),
-    hex = as.raw(dec)
-  )
 
 # CTRL + ALT + C = <67> (Decimal)
 # CTRL + ALT + U = <85> (Decimal)
@@ -84,6 +88,16 @@ key_log <-
 
 count(key_log, window, sort = T)
 
+no_match <-
+  key_log %>%
+  #filter(is.na(x) | is.na(color)) %>%
+  count(layer, key_full, key, x, y)
+
+key_log %>%
+  filter(is.na(x)) %>%
+  count(key_full, sort = TRUE) %>%
+  print(n = Inf)
+
 key_log %>%
   filter(is.na(window)) %>%
   count(window_full, sort = TRUE) %>%
@@ -95,21 +109,30 @@ window_totals <-
   drop_na() %>%
   add_count(window, name = "window_n") %>%
   filter(window_n > 1000) %>%
-  count(window, window_n, layout_key, color, x, y) %>%
-  mutate(pct = (n/window_n * 100)) %>%
+  count(layer, window, window_n, layout_key, color, pos, x, y) %>%
+  filter(layer == "V1") %>%
+  mutate(
+    pct = (n/window_n * 100)
+  ) %>%
   group_by(layout_key) %>%
   mutate(mean = mean(pct)) %>%
   ungroup() %>%
-  mutate(diff = pct - mean,
-         #diff = ifelse(diff > 5, 5, diff)
-         )
+  mutate(
+    diff = pct - mean,
+    #diff = ifelse(diff > 5, 5, diff)
+  )
 
+window_totals %>%
+  ggplot(aes((x), (y))) +
+  geom_point()
+  geom_count(aes(color = color))
 
 key_log %>%
   drop_na() %>%
-  filter(as.Date(date_time) == today()) %>%
+  filter(as.Date(date_time) == today() - 1) %>%
   ggplot(aes(factor(x), factor(y))) +
   geom_count(aes(color = color)) +
+  facet_wrap(~layer) +
   scale_color_identity() +
   theme_minimal() +
   theme(
