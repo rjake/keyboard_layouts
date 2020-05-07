@@ -6,15 +6,15 @@ Setup keyboard like QWERTY + install [Workman layout](https://workmanlayout.org)
 
 ![](https://github.com/rjake/keyboard_layouts/raw/master/layouts/idobo_xd75/condensed_layout/layer_00.png)
 
-### Layer 1 - Arrows
+### Layer 2 - Arrows
 
 ![](https://github.com/rjake/keyboard_layouts/raw/master/layouts/idobo_xd75/condensed_layout/layer_arrows.png)
 
-### Layer 2 - Enclosures
+### Layer 3 - Enclosures
 
 ![](https://github.com/rjake/keyboard_layouts/raw/master/layouts/idobo_xd75/condensed_layout/layer_enclosures.png)
 
-### Layer 3 - Numbers
+### Layer 4 - Numbers
 
 ![](https://github.com/rjake/keyboard_layouts/raw/master/layouts/idobo_xd75/condensed_layout/layer_numbers.png)
 
