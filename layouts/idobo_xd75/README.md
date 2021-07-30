@@ -31,3 +31,14 @@ Setup keyboard like QWERTY + install [Workman layout](https://workmanlayout.org)
 # Default(ish)
 ![](https://github.com/rjake/keyboard_layouts/raw/master/layouts/idobo_xd75/default_layout/layer_00.png)
 
+# Steps to build
+1. go to https://config.qmk.fm/#/idobo/LAYOUT_ortho_5x15
+2. `[??? KEYMAP.JSON]` to import `.json` file of layers
+3. Edit layers
+4. Export
+    * `[COMPILE]`
+    * `[FIRMWARE]`
+    * `[??? KEYMAP.JSON]`
+5. Document
+    * `[PRINT KEYMAP]`
+    * take screenshots
