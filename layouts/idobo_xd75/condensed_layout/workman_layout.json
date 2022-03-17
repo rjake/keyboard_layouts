@@ -1,8 +1,7 @@
 {
   "version": 1,
-  "notes": "My awesome keymap",
-  "documentation": "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
-  "keyboard": "idobo",
+  "documentation": "This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\n",
+  "keyboard": "idobao/id75/v1",
   "keymap": "idobo_layout_ortho_5x15_mine",
   "layout": "LAYOUT_ortho_5x15",
   "layers": [
@@ -71,9 +70,9 @@
       "KC_NO",
       "RGUI(KC_W)",
       "KC_RALT",
-      "KC_LSFT",
+      "KC_RSFT",
       "KC_BSPC",
-      "KC_LCTL",
+      "KC_RCTL",
       "KC_NO",
       "MO(2)",
       "KC_SPC",
@@ -469,5 +468,6 @@
       "KC_NO"
     ]
   ],
-  "author": "Anonymous"
+  "author": "Anonymous",
+  "notes": "My awesome keymap"
 }
