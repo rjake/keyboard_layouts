@@ -16,6 +16,6 @@
 
 settings are saved in `C:\Users\[user]\AppData\Local\LGHUB` as `settings.db`
 
-[G502-hero](/g502)
+[G502-hero](g502)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="g502/map.png"  alt="g502-map" width = 600>
