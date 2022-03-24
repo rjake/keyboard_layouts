@@ -1,0 +1,17 @@
+# Logitech G-Hub
+
+[G502-hero](/g502)
+
+### G-Hub
+
+#### adjust 
+
+* in G-Hub go click on mouse (center) then adjust buttons to try on
+* to add new profiles go go home page and click on "Active Profile" in top then create/copy profiles at the bottom
+
+#### save
+
+* go to settings (top right) and turn "On-board memory mode" to `ON`
+* right click on each slot and (re)load the appropriate profile 
+
+
