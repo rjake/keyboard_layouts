@@ -1,7 +1,5 @@
 # Logitech G-Hub
 
-[G502-hero](/g502)
-
 ### G-Hub
 
 #### adjust 
@@ -17,3 +15,7 @@
 #### settings
 
 settings are saved in `C:\Users\[user]\AppData\Local\LGHUB` as `settings.db`
+
+[G502-hero](/g502)
+
+<img src="/g502/map.png"  alt="g502-map">
