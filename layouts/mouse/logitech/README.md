@@ -14,4 +14,6 @@
 * go to settings (top right) and turn "On-board memory mode" to `ON`
 * right click on each slot and (re)load the appropriate profile 
 
+#### settings
 
+settings are saved in `C:\Users\[user]\AppData\Local\LGHUB` as `settings.db`
