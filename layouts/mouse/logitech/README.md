@@ -4,7 +4,7 @@
 
 #### adjust 
 
-* in G-Hub go click on mouse (center) then adjust buttons to try on
+* in G-Hub click on mouse (center) then adjust buttons to try on
 * to add new profiles go go home page and click on "Active Profile" in top then create/copy profiles at the bottom
 
 #### save
