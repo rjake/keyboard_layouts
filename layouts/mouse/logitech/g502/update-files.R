@@ -68,10 +68,12 @@ commands <-
     b311afbb-3051-47a2-9380-1328943a0378, profile-workman
     b813a90c-baa3-4618-80f3-5f3cca46b6da, paste-workman
     ccb69c61-5795-47b1-aba5-338f0a0a1153, profile-qwerty
+    e51eb733-91b0-4e54-bcea-864bb4a4540c, print-screen
     "
   ) |> 
   as_tibble() |> 
   print()
+
 
 locations <-
   data.table::fread(
@@ -92,6 +94,8 @@ locations <-
   as_tibble() |> 
   mutate(button = paste0("g", id)) |> 
   print()
+
+
 
 locations |> 
   ggplot(aes(x, y)) +
@@ -126,6 +130,10 @@ assignments <-
   ) |>
   print()
 
+anti_join(
+  distinct(assignments, cardId, profile, button),
+  commands
+)
 
 # View(assignments)  
 
@@ -138,7 +146,7 @@ final_mapping <-
       str_detect(command, "click") ~ "click",
       str_detect(command, "scroll|arrow") ~ "move",
       x < 3 ~ "side",
-      x < 5 ~ "top-left",
+      x < 5 | str_detect(command, "print") ~ "top-left",
       is.na(command) ~ NA_character_
     )
   ) |> 
