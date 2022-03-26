@@ -144,10 +144,10 @@ final_mapping <-
   left_join(locations) |> 
   mutate(
     color = case_when(
-      str_detect(command, "click") ~ "click",
+      str_detect(command, "click") | command == "escape" ~ "click",
       str_detect(command, "scroll|arrow") ~ "move",
       x < 3 ~ "side",
-      x < 5 | str_detect(command, "print") ~ "top-left",
+      x < 5 | button == "g9" ~ "other",
       is.na(command) ~ NA_character_
     )
   ) |> 
@@ -170,7 +170,7 @@ final_mapping |>
     size = 3, color = "grey40", alpha = 0.3,
     label.padding = unit(0.15, "lines")
   ) +
-  facet_grid(shifted~profile) +
+  facet_grid(profile ~ shifted) +
   scale_x_continuous(expand = expansion(0.1)) +
   scale_y_continuous(expand = expansion(0.1)) +
   coord_fixed() +
