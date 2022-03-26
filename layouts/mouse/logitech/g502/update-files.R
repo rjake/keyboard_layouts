@@ -50,6 +50,7 @@ commands <-
     "cardId, command
     0f82f693-5b78-4cf5-867e-010601000000, copy-qwerty 
     0f82f693-5b78-4cf5-867e-011901000000, paste-qwerty
+    0f82f693-5b78-4cf5-867e-012900000000, escape
     0f82f693-5b78-4cf5-867e-014b00000000, page-up
     0f82f693-5b78-4cf5-867e-014e00000000, page-down
     0f82f693-5b78-4cf5-867e-020100000000, left-click
@@ -131,7 +132,7 @@ assignments <-
   print()
 
 anti_join(
-  distinct(assignments, cardId, profile, button),
+  distinct(assignments, cardId, profile, button, shifted),
   commands
 )
 
