@@ -1,76 +1,129 @@
-key,layout_key,key_type,color
-key.esc,KC_ESC,esc,red
-1 !,KC_1,num,navyblue
-2 @,KC_2,num,navyblue
-3 #,KC_3,num,navyblue
-4 $,KC_4,num,navyblue
-5 %,KC_5,num,navyblue
-[ {,KC_LBRC,punct,orange
-\ |,KC_BSLS,punct,orange
-] },KC_RBRC,punct,orange
-6 ^,KC_6,num,navyblue
-7 &,KC_7,num,navyblue
-8 *,KC_8,num,navyblue
-9 (,KC_9,num,navyblue
-0 ),KC_0,num,navyblue
-` ~,KC_GRV,punct,orange
-key.tab,KC_TAB,space,pink
-q,KC_Q,alpha,grey80
-d,KC_D,alpha,grey80
-r,KC_R,alpha,grey80
-w,KC_W,alpha,grey80
-b,KC_B,alpha,grey80
-,C_S_T(KC_NO),other,yellow
-key.up,KC_UP,location,green
-key.enter,KC_ENT,enter,pink
-j,KC_J,alpha,grey80
-f,KC_F,alpha,grey80
-u,KC_U,alpha,grey80
-p,KC_P,alpha,grey80
-; :,KC_SCLN,punct,orange
-"' """,KC_QUOT,punct,orange
-key.caps_lock,KC_CAPS,mod,cyan
-a,KC_A,alpha,grey80
-s,KC_S,alpha,grey80
-h,KC_H,alpha,grey80
-t,KC_T,alpha,grey80
-g,KC_G,alpha,grey80
-key.left,KC_LEFT,location,green
-key.down,KC_DOWN,location,green
-key.right,KC_RGHT,location,green
-y,KC_Y,alpha,grey80
-n,KC_N,alpha,grey80
-e,KC_E,alpha,grey80
-o,KC_O,alpha,grey80
-i,KC_I,alpha,grey80
-key.enter,KC_ENT,enter,pink
-,MO(1),other,yellow
-z,KC_Z,alpha,grey80
-x,KC_X,alpha,grey80
-m,KC_M,alpha,grey80
-c,KC_C,alpha,grey80
-v,KC_V,alpha,grey80
-= +,KC_EQL,punct,orange
-key.page_up,KC_PGUP,location,green
-_ -,KC_MINS,punct,orange
-k,KC_K,alpha,grey80
-l,KC_L,alpha,grey80
-", <",KC_COMM,alpha,grey80
-. >,KC_DOT,alpha,grey80
-/ ?,KC_SLSH,alpha,grey80
-key.delete,KC_DEL,remove,red
-key.home,KC_HOME,location,green
-key.end,KC_END,location,green
-key.print_screen,KC_PSCR,function,cyan
-key.alt_r,KC_RALT,mod,cyan
-key.shift,KC_LSFT,mod,cyan
-key.backspace,KC_BSPC,remove,red
-key.ctrl_l,KC_LCTL,mod,cyan
-key.page_down,KC_PGDN,location,green
-key.ctrl_r,KC_RCTL,mod,cyan
-key.space,KC_SPC,space,pink
-key.shift_r,KC_RSFT,mod,cyan
-key.cmd,KC_LGUI,function,cyan
-key.to(1),TO(1),function,cyan
-key.to(2),TO(2),function,cyan
-key.f5,KC_F5,function,cyan
+key,layout_key,key_type,color,nchar,label
+0 ),KC_0,num,dodgerblue,1,0
+1 !,KC_1,num,dodgerblue,1,1
+2 @,KC_2,num,dodgerblue,1,2
+3 #,KC_3,num,dodgerblue,1,3
+4 $,KC_4,num,dodgerblue,1,4
+5 %,KC_5,num,dodgerblue,1,5
+6 ^,KC_6,num,dodgerblue,1,6
+7 &,KC_7,num,dodgerblue,1,7
+8 *,KC_8,num,dodgerblue,1,8
+9 (,KC_9,num,dodgerblue,1,9
+,KC_NO,empty,grey60,0,
+,KC_PMNS,punct,orange,1,-
+,KC_TRNS,empty,white,1,-
+"' """,KC_QUOT,punct,orange,3,"' """
+,KC_EXLM,punct,orange,1,!
+,KC_DQUO,punct,orange,1,""""
+,KC_HASH,punct,orange,1,#
+,KC_DLR,punct,orange,1,$
+,KC_PERC,punct,orange,1,%
+,KC_AMPR,punct,orange,1,&
+,KC_LPRN,punct,orange,1,(
+,KC_RPRN,punct,orange,1,)
+,KC_ASTR,punct,orange,1,*
+", <",KC_COMM,alpha,grey80,3,", <"
+. >,KC_DOT,alpha,grey80,3,. >
+/ ?,KC_SLSH,alpha,grey80,3,/ ?
+,KC_COLN,punct,orange,1,:
+; :,KC_SCLN,punct,orange,3,; :
+,KC_QUES,punct,orange,1,?
+,KC_AT,punct,orange,1,@
+,KC_LCBR,punct,orange,1,[
+[ {,KC_LBRC,punct,orange,3,[ {
+\ |,KC_BSLS,punct,orange,3,\ |
+,KC_RCBR,punct,orange,1,]
+] },KC_RBRC,punct,orange,3,] }
+,KC_CIRC,punct,orange,1,^
+,KC_UNDS,punct,orange,1,_
+_ -,KC_MINS,punct,orange,3,_ -
+` ~,KC_GRV,punct,orange,3,` ~
+,KC_PIPE,punct,orange,1,|
+,KC_TILD,punct,orange,1,~
+,KC_PLUS,punct,orange,1,+
+,KC_LT,punct,orange,1,<
+= +,KC_EQL,punct,orange,3,= +
+,KC_GT,punct,orange,1,>
+a,KC_A,alpha,grey80,1,A
+,RALT(KC_MINS),other,yellow,5,Alt -
+,RALT(KC_1),other,yellow,5,Alt 1
+b,KC_B,alpha,grey80,1,B
+key.backspace,KC_BSPC,remove,red,2,BS
+c,KC_C,alpha,grey80,1,C
+,RCTL(KC_1),other,yellow,3,C+1
+,RCTL(KC_2),other,yellow,3,C+2
+,RCTL(KC_3),other,yellow,3,C+3
+,RCTL(KC_RALT),other,yellow,3,C+A
+,LCA_T(KC_Z),other,yellow,7,C+A [Z]
+,RCTL(KC_ENT),other,yellow,3,C+E
+,LCA(KC_DEL),function,cyan,3,CAD
+key.caps_lock,KC_CAPS,mod,cyan,4,CAPS
+,C_S_T(KC_NO),other,yellow,7,CS [  ]
+,C_S_T(KC_X),other,yellow,6,CS [X]
+d,KC_D,alpha,grey80,1,D
+key.delete,KC_DEL,remove,red,3,DEL
+,RGUI(KC_D),other,yellow,4,DESK
+key.down,KC_DOWN,location,green,4,DOWN
+e,KC_E,alpha,grey80,1,E
+key.end,KC_END,location,green,3,END
+key.enter,KC_ENT,enter,pink,5,ENTER
+key.enter,KC_ENT,enter,pink,5,ENTER
+key.esc,KC_ESC,esc,red,3,ESC
+f,KC_F,alpha,grey80,1,F
+,KC_F1,function,cyan,2,F1
+,KC_F10,function,cyan,3,F10
+,KC_F2,function,cyan,2,F2
+,KC_F3,function,cyan,2,F3
+,KC_F4,function,cyan,2,F4
+key.f5,KC_F5,function,cyan,2,F5
+,KC_F6,function,cyan,2,F6
+,KC_F7,function,cyan,2,F7
+,KC_F8,function,cyan,2,F8
+,KC_F9,function,cyan,2,F9
+,RGUI(KC_E),other,yellow,5,FILES
+g,KC_G,alpha,grey80,1,G
+h,KC_H,alpha,grey80,1,H
+key.home,KC_HOME,location,green,4,HOME
+i,KC_I,alpha,grey80,1,I
+j,KC_J,alpha,grey80,1,J
+k,KC_K,alpha,grey80,1,K
+l,KC_L,alpha,grey80,1,L
+key.ctrl_l,KC_LCTL,mod,cyan,6,L.CTRL
+key.shift,KC_LSFT,mod,cyan,6,L.SHFT
+,"LT(2,KC_A)",mod,cyan,5,L2[A]
+,"LT(1,KC_G)",mod,cyan,5,L1[G]
+,"LT(4,KC_H)",mod,cyan,5,L4[H]
+,"LT(3,KC_S)",mod,cyan,5,L3[S]
+key.left,KC_LEFT,location,green,4,LEFT
+,RGUI(KC_L),other,yellow,4,LOCK
+m,KC_M,alpha,grey80,1,M
+,MO(1),other,yellow,5,MO(1)
+,MO(3),other,yellow,5,MO(3)
+,MO(4),other,yellow,5,MO(4)
+n,KC_N,alpha,grey80,1,N
+o,KC_O,alpha,grey80,1,O
+p,KC_P,alpha,grey80,1,P
+key.page_down,KC_PGDN,location,green,5,PG DN
+key.page_up,KC_PGUP,location,green,5,PG UP
+key.print_screen,KC_PSCR,function,cyan,5,PRINT
+q,KC_Q,alpha,grey80,1,Q
+r,KC_R,alpha,grey80,1,R
+key.alt_r,KC_RALT,mod,cyan,5,R.ALT
+key.ctrl_r,KC_RCTL,mod,cyan,6,R.CTRL
+key.shift_r,KC_RSFT,mod,cyan,6,R.SHFT
+key.right,KC_RGHT,location,green,5,RIGHT
+s,KC_S,alpha,grey80,1,S
+key.space,KC_SPC,space,pink,5,SPACE
+,RGUI(KC_LEFT),other,yellow,5,SPLIT
+t,KC_T,alpha,grey80,1,T
+key.tab,KC_TAB,space,pink,3,TAB
+key.to(1),TO(1),function,cyan,5,TO(1)
+key.to(2),TO(2),function,cyan,5,TO(2)
+u,KC_U,alpha,grey80,1,U
+key.up,KC_UP,location,green,2,UP
+v,KC_V,alpha,grey80,1,V
+w,KC_W,alpha,grey80,1,W
+key.cmd,KC_LGUI,function,cyan,3,WIN
+x,KC_X,alpha,grey80,1,X
+y,KC_Y,alpha,grey80,1,Y
+z,KC_Z,alpha,grey80,1,Z
