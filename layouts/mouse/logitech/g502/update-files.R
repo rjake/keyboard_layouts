@@ -13,7 +13,7 @@ db_path <-
   )
 
 file.copy(
-  from = db_path, 
+  from = db_path,
   to = "~/github/keyboard_layouts/layouts/mouse/logitech/g502/settings.db",
   overwrite = TRUE
 )
@@ -34,21 +34,21 @@ contents <- res$file[[1]] |> rawToChar()
 settings <-
   fromJSON(contents, flatten = TRUE)
 
-settings_df <- 
-  settings$profiles |> 
-  map_dfr(flatten) |> 
+settings_df <-
+  settings$profiles |>
+  map_dfr(flatten) |>
   as_tibble()
 
 # commands <-
-#   settings$applications$applications$commands |> 
-#   flatten_dfr() |> 
-#   rename(command = name) |> 
+#   settings$applications$applications$commands |>
+#   flatten_dfr() |>
+#   rename(command = name) |>
 #   print()
 
 commands <-
   data.table::fread(
     "cardId, command
-    0f82f693-5b78-4cf5-867e-010601000000, copy-qwerty 
+    0f82f693-5b78-4cf5-867e-010601000000, copy-qwerty
     0f82f693-5b78-4cf5-867e-011901000000, paste-qwerty
     0f82f693-5b78-4cf5-867e-012900000000, escape
     0f82f693-5b78-4cf5-867e-014b00000000, page-up
@@ -71,8 +71,8 @@ commands <-
     ccb69c61-5795-47b1-aba5-338f0a0a1153, profile-qwerty
     e51eb733-91b0-4e54-bcea-864bb4a4540c, print-screen
     "
-  ) |> 
-  as_tibble() |> 
+  ) |>
+  as_tibble() |>
   print()
 
 
@@ -91,40 +91,40 @@ locations <-
     10, 6.5, 3.75
     11, 5.5, 3.75
     "
-) |> 
-  as_tibble() |> 
-  mutate(button = paste0("g", id)) |> 
+) |>
+  as_tibble() |>
+  mutate(button = paste0("g", id)) |>
   print()
 
 
 
-locations |> 
+locations |>
   ggplot(aes(x, y)) +
   geom_text(aes(label = id)) +
   coord_fixed()
 
-assignments |> 
-  group_by(cardId, button, shifted) |> 
-  summarise(profiles = paste(profile, collapse = ", ")) |> 
-  ungroup() |> 
+assignments |>
+  group_by(cardId, button, shifted) |>
+  summarise(profiles = paste(profile, collapse = ", ")) |>
+  ungroup() |>
   left_join(commands) |>
-  filter(button == "g8") |> 
-  spread(shifted, command) |> 
+  filter(button == "g8") |>
+  spread(shifted, command) |>
   print()
 
 
 assignments <-
-  settings_df |> 
-  select(profile = name, assignments) |> 
-  unnest(assignments) |> 
-  arrange(slotId) |> 
+  settings_df |>
+  select(profile = name, assignments) |>
+  unnest(assignments) |>
+  arrange(slotId) |>
   filter(str_detect(slotId, "g502hero_g")) |>
   separate(
-    col = slotId, 
+    col = slotId,
     into = c("device", "button", "unknown", "shifted"),
     fill = "right",
     remove = FALSE
-  ) |> 
+  ) |>
   mutate(
     profile = ifelse(profile == "PROFILE_NAME_DEFAULT", "main", profile),
     shifted = replace_na(shifted, "default")
@@ -136,12 +136,12 @@ anti_join(
   commands
 )
 
-# View(assignments)  
+# View(assignments)
 
 final_mapping <-
-  assignments |> 
+  assignments |>
   left_join(commands) |>
-  left_join(locations) |> 
+  left_join(locations) |>
   mutate(
     color = case_when(
       str_detect(command, "click") | command == "escape" ~ "click",
@@ -150,18 +150,18 @@ final_mapping <-
       x < 5 | button == "g9" ~ "other",
       is.na(command) ~ NA_character_
     )
-  ) |> 
+  ) |>
   print()
 
 
-final_mapping |> 
+final_mapping |>
   ggplot(aes(x, y)) +
   geom_vline(
     xintercept = c(3, 3, 4),
     color = "grey90", linetype = "dashed"
   ) +
   ggrepel::geom_text_repel(
-    aes(label = command, color = color), 
+    aes(label = command, color = color),
     size = 3,
     nudge_y = -0.25
   ) +
@@ -186,17 +186,17 @@ ggsave(
 )
 
 
-# from 
+# from
 # # https://www.amazon.com/Logitech-Lightspeed-Wireless-Lightsync-Powerplay/product-reviews/B083C41BS4/ref=cm_cr_arp_d_viewopt_kywd?reviewerType=all_reviews&pageNumber=1&filterByKeyword=cardid
-# It's in plain-text XML-style JSON format, and you can carefully edit it if you 
-# like (probably best done with GHub closed, and subsequently re-launched). You can, 
-# for example, create exotic keystroke assignments. Search the file for "cardId" values 
-# that look like GUIDs and end in a "01XX00000000" pattern. These XX are hexadecimal 
-# "USB Scan Codes" (google Scan Codes Demystified by John Savard) that you can also 
-# find in the "Universal Serial Bus (USB) HID Usage Tables" document (hut1_12v2.pdf) 
-# section "Keyboard/Keypad Page (0x07)" starting on page 53. Useful if F13~F24 and 
+# It's in plain-text XML-style JSON format, and you can carefully edit it if you
+# like (probably best done with GHub closed, and subsequently re-launched). You can,
+# for example, create exotic keystroke assignments. Search the file for "cardId" values
+# that look like GUIDs and end in a "01XX00000000" pattern. These XX are hexadecimal
+# "USB Scan Codes" (google Scan Codes Demystified by John Savard) that you can also
+# find in the "Universal Serial Bus (USB) HID Usage Tables" document (hut1_12v2.pdf)
+# section "Keyboard/Keypad Page (0x07)" starting on page 53. Useful if F13~F24 and
 # the like aren't enough for you. Codes you could try: 85, 88, 8A, 8B, 90, 91, 93.
-# 
+#
 # https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf
 # https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 # https://blog.puzey.net/logitech-ghub-bind-all-the-things/
